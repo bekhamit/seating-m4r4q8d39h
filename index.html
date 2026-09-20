@@ -1,0 +1,419 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Abylkhair &amp; Irana Seating</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
+<style>
+:root{
+  --paper:#F7F5EE;
+  --panel:#FFFFFF;
+  --ink:#253023;
+  --ink-soft:#6E7A69;
+  --sage:#5C7350;
+  --sage-deep:#41552F;
+  --wash:#EEF1E7;
+  --line:#DEDFD2;
+  --hair:#E8E8DD;
+  --shadow:0 18px 44px rgba(45,60,40,.07);
+  --doily:.42;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11170F;
+    --panel:#1A2119;
+    --ink:#ECEEE1;
+    --ink-soft:#9BA895;
+    --sage:#A7C08F;
+    --sage-deep:#C4D6AF;
+    --wash:#222B1F;
+    --line:#2F3A2C;
+    --hair:#273022;
+    --shadow:0 18px 44px rgba(0,0,0,.34);
+    --doily:.3;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11170F;
+  --panel:#1A2119;
+  --ink:#ECEEE1;
+  --ink-soft:#9BA895;
+  --sage:#A7C08F;
+  --sage-deep:#C4D6AF;
+  --wash:#222B1F;
+  --line:#2F3A2C;
+  --hair:#273022;
+  --shadow:0 18px 44px rgba(0,0,0,.34);
+  --doily:.3;
+}
+
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  font-size:17px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start; /* keep .sheet from stretching — its column children must not shrink */
+}
+.sheet{
+  width:min(880px,100%);
+  padding-left:20px;padding-right:20px;
+  padding-block:clamp(22px,5vw,56px);
+  display:flex;flex-direction:column;gap:clamp(30px,5vw,54px);
+}
+
+.label{
+  font-family:Jost,'Avenir Next',Helvetica,sans-serif;
+  font-weight:400;font-size:11px;
+  letter-spacing:.34em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.script{
+  font-family:'Pinyon Script','Snell Roundhand',cursive;
+  font-weight:400;color:var(--sage);
+  line-height:1;text-wrap:balance;
+}
+
+/* ---------- place card ---------- */
+.place{
+  position:relative;overflow:hidden;
+  background:var(--panel);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  padding:clamp(34px,7vw,60px) clamp(20px,5vw,56px) clamp(30px,6vw,52px);
+}
+.place::after{
+  content:"";position:absolute;inset:9px;
+  border:1px solid var(--hair);pointer-events:none;
+}
+.lace{position:absolute;width:clamp(180px,34vw,290px);color:var(--sage);opacity:var(--doily);pointer-events:none}
+.lace.tr{top:-16%;right:-14%}
+.lace.bl{bottom:-16%;left:-15%}
+.inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+.monogram{letter-spacing:.42em;padding-left:.42em;font-size:12px}
+.names{
+  font-family:'Pinyon Script','Snell Roundhand',cursive;
+  font-weight:400;color:var(--ink);
+  font-size:clamp(44px,11vw,70px);line-height:1.08;
+  margin:12px 0 0;text-wrap:balance;
+}
+.date{margin-top:14px}
+.divider{display:flex;align-items:center;gap:16px;width:min(320px,80%);margin:26px 0 30px;color:var(--sage)}
+.divider i{flex:1;height:1px;background:currentColor;opacity:.45}
+.sprig{width:26px;height:34px;flex:none;color:var(--sage)}
+
+.ask{font-size:clamp(22px,5vw,27px);letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin:0}
+.sub{
+  font-family:Jost,'Avenir Next',Helvetica,sans-serif;
+  font-size:13px;color:var(--ink-soft);margin:10px 0 26px;font-weight:300;
+}
+
+/* ---------- search ---------- */
+.field{position:relative;width:min(430px,100%)}
+#q{
+  width:100%;appearance:none;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:20px;color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;
+  padding:14px 46px 14px 22px;
+  transition:border-color .18s,box-shadow .18s;
+}
+#q::placeholder{color:var(--ink-soft);opacity:.75}
+#q:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px color-mix(in srgb,var(--sage) 20%,transparent)}
+.glass{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--ink-soft);pointer-events:none}
+
+.results{
+  width:min(430px,100%);margin-top:10px;text-align:left;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;
+}
+.opt{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:12px 18px;cursor:pointer;border-bottom:1px solid var(--hair);
+  letter-spacing:.11em;text-transform:uppercase;font-size:15px;
+}
+.opt:last-child{border-bottom:0}
+.opt:hover,.opt.on{background:var(--wash)}
+.opt em{
+  font-family:Jost,sans-serif;font-style:normal;font-size:10px;
+  letter-spacing:.22em;color:var(--ink-soft);white-space:nowrap;
+}
+.none{padding:16px 18px;font-family:Jost,sans-serif;font-size:13px;color:var(--ink-soft);font-weight:300}
+
+/* ---------- answer ---------- */
+.answer{
+  width:min(430px,100%);margin-top:26px;padding:30px 22px 26px;
+  border:1px solid var(--sage);background:var(--wash);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  animation:rise .4s ease both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.answer .who{
+  font-size:clamp(19px,4.5vw,23px);letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;color:var(--ink);text-wrap:balance;
+}
+.answer .word{font-size:clamp(54px,15vw,80px);margin:2px 0 4px}
+.answer .no{font-family:Jost,sans-serif;font-size:11px;letter-spacing:.3em;color:var(--sage-deep)}
+.mates{margin-top:18px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--sage) 35%,transparent);width:100%}
+.mates ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
+.mates li{font-size:15px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
+.again{
+  margin-top:20px;border:0;background:none;cursor:pointer;color:var(--sage-deep);
+  font-family:Jost,sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  padding:6px 4px;border-bottom:1px solid currentColor;
+}
+.again:hover{color:var(--ink)}
+.hint{margin-top:22px;font-family:Jost,sans-serif;font-size:11.5px;font-weight:300;color:var(--ink-soft)}
+
+/* ---------- seating chart ---------- */
+.chart-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.chart-head h2{margin:0;font-size:clamp(30px,8vw,44px);letter-spacing:0}
+.grid{
+  margin-top:26px;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fill,minmax(232px,1fr));
+}
+.tcard{
+  background:var(--panel);border:1px solid var(--line);
+  padding:22px 18px 20px;text-align:center;
+  transition:border-color .2s,background .2s;
+}
+.tcard .word{font-size:40px;margin:4px 0 14px}
+.tcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.tcard li{font-size:14.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-style:italic}
+.tcard.on{border-color:var(--sage);background:var(--wash)}
+.tcard li.you{font-style:normal;font-weight:600;color:var(--sage-deep)}
+.tcard li.you::before{content:"❧";font-style:normal;margin-right:7px;color:var(--sage);font-size:12px;vertical-align:1px}
+
+footer{text-align:center;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink-soft);font-weight:300}
+
+/* phones: pull the lace tight into the corners so it never sits under text */
+@media (max-width:560px){
+  .lace{width:clamp(150px,44vw,215px);opacity:.2}
+  .lace.tr{top:-6%;right:-30%}
+  .lace.bl{bottom:-14%;left:-32%}
+  .divider{margin:22px 0 26px}
+  .grid{gap:12px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<main class="sheet">
+  <section class="place">
+    <svg class="lace tr" viewBox="0 0 400 400" aria-hidden="true"></svg>
+    <svg class="lace bl" viewBox="0 0 400 400" aria-hidden="true"></svg>
+
+    <div class="inner">
+      <div class="label monogram">A · I</div>
+      <h1 class="names">Abylkhair &amp; Irana</h1>
+      <div class="label date">September 20, 2026</div>
+
+      <div class="divider" aria-hidden="true">
+        <i></i>
+        <svg class="sprig" viewBox="0 0 40 52">
+          <rect x="1.5" y="1.5" width="37" height="49" rx="18.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"/>
+          <path d="M20 41 C20 32 20 23 20 12" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          <ellipse cx="14.4" cy="31" rx="5.4" ry="2.5" fill="currentColor" transform="rotate(-30 14.4 31)"/>
+          <ellipse cx="25.6" cy="27" rx="5.4" ry="2.5" fill="currentColor" transform="rotate(30 25.6 27)"/>
+          <ellipse cx="14.9" cy="23" rx="4.8" ry="2.3" fill="currentColor" transform="rotate(-32 14.9 23)"/>
+          <ellipse cx="25.1" cy="19" rx="4.8" ry="2.3" fill="currentColor" transform="rotate(32 25.1 19)"/>
+          <ellipse cx="20" cy="12" rx="2.6" ry="4.4" fill="currentColor"/>
+        </svg>
+        <i></i>
+      </div>
+
+      <h2 class="ask">Find your table</h2>
+      <p class="sub">Введите своё имя · Type your name</p>
+
+      <div class="field">
+        <input id="q" type="search" placeholder="Имя / Name" autocomplete="off" autocapitalize="off"
+               spellcheck="false" role="combobox" aria-expanded="false" aria-controls="results"
+               aria-label="Search for your name">
+        <svg class="glass" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.7 12.7 L17 17" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div id="results" class="results" role="listbox" aria-label="Matching names" hidden></div>
+      <div id="answer" hidden></div>
+
+      <p class="hint">Можно писать кириллицей или латиницей · Cyrillic or Latin</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chart-head">
+      <div class="label">Seating chart</div>
+      <h2 class="script">Eleven Tables</h2>
+    </div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <footer>With love · Рахмет · Thank you</footer>
+</main>
+
+<script>
+const TABLES = [
+  {n:1,  word:'One',    guests:['Father of the Bride','Mother of the Bride','Gulmira & Almaz','Ulan','Eraly','Eddie & Kathleen','Williams']},
+  {n:2,  word:'Two',    guests:['Tolkun','Jannat','Kalybek & Gulsara','Amantur','Apsamat & Kanykei','Aitumar']},
+  {n:3,  word:'Three',  guests:['Dr. Burkhardt','Dr. Chowdhury','Vlada & Stas','Hailey']},
+  {n:4,  word:'Four',   guests:['Aikanysh','Adilkhan','Aisel & Ayaz','Bob & Tinhinane','Qodyr','Navid']},
+  {n:5,  word:'Five',   guests:['Nurdaulet','Bolot','Anara','Adelya','Erma','Darika','Alimzhan','Diane']},
+  {n:6,  word:'Six',    guests:['Matthew','Akylbek','Aidai','Akylai','Alia','Nusheen','Adriana']},
+  {n:7,  word:'Seven',  guests:['Arsalan','Polina','Akmal','Karina','Adam','Almat & Kamila']},
+  {n:8,  word:'Eight',  guests:['Ted','Akhliddin','Khamza','Hamid','Asadbek','Bilol','Abdurakhman','Hatem']},
+  {n:9,  word:'Nine',   guests:['Nurlan & Guldana','Aiaru','Arifbey','Rustem','Gulzira','Islam','Taalaibek']},
+  {n:10, word:'Ten',    guests:['Abuali','Dana','Abzal & Inabat','Kamal','Tima & Aisaule','Sayat']},
+  {n:11, word:'Eleven', guests:['Father of the Groom','Mother of the Groom','Aigul & Mansur','Abay & Sandugash','Bereke & Roshan']}
+];
+
+/* ---- transliteration: Cyrillic (RU/KZ/KG) folded onto the Latin spellings ---- */
+const CYR = {'а':'a','ә':'a','б':'b','в':'v','г':'g','ғ':'g','д':'d','е':'e','ё':'e','ж':'j','з':'z',
+  'и':'i','й':'i','к':'k','қ':'k','л':'l','м':'m','н':'n','ң':'n','о':'o','ө':'o','п':'p','р':'r',
+  'с':'s','т':'t','у':'u','ұ':'u','ү':'u','ф':'f','х':'h','һ':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sh',
+  'ы':'y','і':'i','э':'e','ю':'yu','я':'ya','ь':'','ъ':''};
+function norm(s){
+  return (s || '').toLowerCase().split('').map(c => CYR[c] ?? c).join('')
+    .replace(/[^a-z0-9]/g,'')
+    .replace(/kh/g,'h').replace(/zh/g,'j')
+    .replace(/q/g,'k').replace(/x/g,'h').replace(/w/g,'v')
+    .replace(/(.)\1+/g,'$1');
+}
+
+/* Cyrillic spellings for names whose Latin form transliterates differently */
+const ALIASES = {
+  'Williams':'Уильямс Вильямс',
+  'Matthew':'Мэтью Метью',
+  'Eddie & Kathleen':'Эдди Кэтлин Кетлин',
+  'Hailey':'Хейли Хэйли',
+  'Diane':'Дайан Диана',
+  'Dr. Burkhardt':'Буркхардт Бурхардт доктор',
+  'Dr. Chowdhury':'Чоудхури Чаудри доктор',
+  'Bob & Tinhinane':'Боб Тинхинан'
+};
+const GUESTS = TABLES.flatMap(t => t.guests.map(g =>
+  ({name:g, key:norm(g + ' ' + (ALIASES[g] || '')), table:t})));
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+/* ---- lace medallion, built from rings of loops ---- */
+(function lace(){
+  const parts = ['<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">'];
+  [[38,10,7],[68,18,8],[100,26,9],[134,34,10],[170,42,11],[206,50,12]].forEach(([r,count,loop],ring) => {
+    for (let i = 0; i < count; i++){
+      const a = (i / count) * Math.PI * 2 + (ring % 2 ? Math.PI / count : 0);
+      parts.push(`<circle cx="${(200 + Math.cos(a) * r).toFixed(1)}" cy="${(200 + Math.sin(a) * r).toFixed(1)}" r="${loop}"/>`);
+    }
+  });
+  for (let i = 0; i < 6; i++){
+    parts.push(`<ellipse cx="200" cy="200" rx="10" ry="22" transform="rotate(${i * 30} 200 200)"/>`);
+  }
+  parts.push('</g>');
+  document.querySelectorAll('.lace').forEach((svg, i) => {
+    svg.innerHTML = i ? `<g transform="rotate(180 200 200)">${parts.join('')}</g>` : parts.join('');
+  });
+})();
+
+/* ---- seating chart ---- */
+const grid = document.getElementById('grid');
+grid.innerHTML = TABLES.map(t => `
+  <article class="tcard" id="t${t.n}">
+    <div class="label">Table</div>
+    <div class="script word">${t.word}</div>
+    <ul>${t.guests.map(g => `<li data-name="${esc(g)}">${esc(g)}</li>`).join('')}</ul>
+  </article>`).join('');
+
+/* ---- search ---- */
+const q = document.getElementById('q');
+const results = document.getElementById('results');
+const answer = document.getElementById('answer');
+let matches = [], active = 0;
+
+function render(){
+  const v = norm(q.value);
+  answer.hidden = true;
+  highlight(null);
+  if (!v){ matches = []; results.hidden = true; q.setAttribute('aria-expanded','false'); return; }
+  matches = GUESTS.filter(g => g.key.includes(v)).slice(0, 8);
+  active = 0;
+  results.innerHTML = matches.length
+    ? matches.map((g, i) => `<div class="opt${i === 0 ? ' on' : ''}" role="option" tabindex="-1"
+         aria-selected="${i === 0}" data-i="${i}"><span>${esc(g.name)}</span><em>Table ${g.table.n}</em></div>`).join('')
+    : `<div class="none">Имя не найдено · Name not found</div>`;
+  results.hidden = false;
+  q.setAttribute('aria-expanded','true');
+}
+
+function move(step){
+  if (!matches.length) return;
+  active = (active + step + matches.length) % matches.length;
+  results.querySelectorAll('.opt').forEach((el, i) => {
+    el.classList.toggle('on', i === active);
+    el.setAttribute('aria-selected', i === active);
+  });
+}
+
+function highlight(g){
+  document.querySelectorAll('.tcard').forEach(c => c.classList.remove('on'));
+  document.querySelectorAll('.tcard li').forEach(li => li.classList.remove('you'));
+  if (!g) return;
+  const card = document.getElementById('t' + g.table.n);
+  card.classList.add('on');
+  card.querySelectorAll('li').forEach(li => { if (li.dataset.name === g.name) li.classList.add('you'); });
+}
+
+function show(g){
+  q.value = g.name;
+  results.hidden = true;
+  q.setAttribute('aria-expanded','false');
+  const mates = g.table.guests.filter(n => n !== g.name);
+  answer.innerHTML = `
+    <div class="answer">
+      <div class="label">Your seat is at</div>
+      <div class="script word">${g.table.word}</div>
+      <div class="label no">Table ${g.table.n}</div>
+      <div class="who">${esc(g.name)}</div>
+      ${mates.length ? `<div class="mates"><div class="label">Seated with you</div>
+        <ul>${mates.map(n => `<li>${esc(n)}</li>`).join('')}</ul></div>` : ''}
+      <button class="again" type="button">Search another name</button>
+    </div>`;
+  answer.hidden = false;
+  answer.querySelector('.again').onclick = reset;
+  highlight(g);
+  answer.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function reset(){
+  answer.hidden = true;
+  q.value = '';
+  matches = [];
+  results.hidden = true;
+  highlight(null);
+  q.focus();
+}
+
+q.addEventListener('input', render);
+results.addEventListener('click', e => {
+  const opt = e.target.closest('.opt');
+  if (opt) show(matches[+opt.dataset.i]);
+});
+q.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+  else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+  else if (e.key === 'Enter' && matches.length){ e.preventDefault(); show(matches[active]); }
+  else if (e.key === 'Escape'){ reset(); }
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.field') && !e.target.closest('#results')) results.hidden = true;
+});
+</script>

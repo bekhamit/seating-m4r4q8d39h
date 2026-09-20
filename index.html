@@ -4,7 +4,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
 <style>
+/* Single, committed palette: the printed place cards, on every phone.
+   color-scheme:light keeps the search field's UI chrome light in dark mode too. */
 :root{
+  color-scheme:light;
   --paper:#F7F5EE;
   --panel:#FFFFFF;
   --ink:#253023;
@@ -16,34 +19,6 @@
   --hair:#E8E8DD;
   --shadow:0 18px 44px rgba(45,60,40,.07);
   --doily:.42;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#11170F;
-    --panel:#1A2119;
-    --ink:#ECEEE1;
-    --ink-soft:#9BA895;
-    --sage:#A7C08F;
-    --sage-deep:#C4D6AF;
-    --wash:#222B1F;
-    --line:#2F3A2C;
-    --hair:#273022;
-    --shadow:0 18px 44px rgba(0,0,0,.34);
-    --doily:.3;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#11170F;
-  --panel:#1A2119;
-  --ink:#ECEEE1;
-  --ink-soft:#9BA895;
-  --sage:#A7C08F;
-  --sage-deep:#C4D6AF;
-  --wash:#222B1F;
-  --line:#2F3A2C;
-  --hair:#273022;
-  --shadow:0 18px 44px rgba(0,0,0,.34);
-  --doily:.3;
 }
 
 *{box-sizing:border-box}

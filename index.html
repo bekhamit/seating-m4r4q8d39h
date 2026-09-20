@@ -275,7 +275,11 @@ const ALIASES = {
   'Diane':'Дайан Диана',
   'Dr. Burkhardt':'Буркхардт Бурхардт доктор',
   'Dr. Chowdhury':'Чоудхури Чаудри доктор',
-  'Bob & Tinhinane':'Боб Тинхинан'
+  'Bob & Tinhinane':'Боб Тинхинан',
+  'Nusheen':'Нушин',
+  'Alia':'Алия',
+  'Aiaru':'Аяру',
+  'Arifbey':'Арифбей'
 };
 const GUESTS = TABLES.flatMap(t => t.guests.map(g =>
   ({name:g, key:norm(g + ' ' + (ALIASES[g] || '')), table:t})));
